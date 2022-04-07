@@ -5,18 +5,21 @@ import Image from 'next/image';
 
 const formStyles = css`
   display: flex;
+  flex-direction: column;
+
   align-items: center;
   gap: 12px;
   border: 2px solid black;
 `;
 const selectStyles = css`
-  width: 100px;
+  width: 150px;
   font-size: 16px;
+  text-align: center;
   padding: 4px;
 `;
 const inputSubmitStyles = css`
   font-size: 16px;
-  padding: 4px;
+  padding: 4px 0px;
   cursor: pointer;
 `;
 
@@ -97,32 +100,49 @@ export default function Home() {
           }}
         >
           <div>
-            <h4>Speisenart</h4>
-            <select css={selectStyles} onChange={handleSelectFoodType}>
-              <option value="default">Optionen</option>
-              <option value="starter">Vorspeise</option>
-              <option value="main">Hauptspeise</option>
-              <option value="dessert">Nachspeise</option>
-            </select>
-          </div>
-          <div>
-            <h4>Salzig oder Süß</h4>
-            <select css={selectStyles} onChange={handleSelectFoodTaste}>
-              <option value="default">Optionen</option>
-              <option value="salt">Salzig</option>
-              <option value="sweet">Süß</option>
-            </select>
-          </div>
-          <div>
-            <h4>Aufwand</h4>
-            <select css={selectStyles} onChange={handleSelectFoodEffort}>
-              <option value="default">Optionen</option>
-              <option value="low">Gering</option>
-              <option value="middle">Mittel</option>
-              <option value="high">Hoch</option>
-            </select>
-          </div>
+            <div>
+              <label htmlFor="food-type">Speisenart: </label>
+              <select
+                name="food-type"
+                css={selectStyles}
+                onChange={handleSelectFoodType}
+                required
+              >
+                <option value="">Optionen</option>
 
+                <option value="starter">Vorspeise</option>
+                <option value="main">Hauptspeise</option>
+                <option value="dessert">Nachspeise</option>
+              </select>
+            </div>
+            <div>
+              <label htmlFor="food-taste">Salzig oder Süß: </label>
+              <select
+                name="food-taste"
+                css={selectStyles}
+                onChange={handleSelectFoodTaste}
+                required
+              >
+                <option value="">Optionen</option>
+                <option value="salt">Salzig</option>
+                <option value="sweet">Süß</option>
+              </select>
+            </div>
+            <div>
+              <label htmlFor="food-effort">Aufwand: </label>
+              <select
+                name="food-effort"
+                css={selectStyles}
+                onChange={handleSelectFoodEffort}
+                required
+              >
+                <option value="">Optionen</option>
+                <option value="low">Gering</option>
+                <option value="middle">Mittel</option>
+                <option value="high">Hoch</option>
+              </select>
+            </div>
+          </div>
           <input
             css={inputSubmitStyles}
             type="submit"

@@ -18,11 +18,10 @@ export async function getRandomRecipe(
   recipeType: string,
   recipeTaste: string,
   recipeEffort: string,
-  randomNumber: number,
 ) {
   const [recipe] = await sql<[Recipe]>`
 
-  SELECT * from recipes WHERE type = ${recipeType} AND taste = ${recipeTaste} AND effort = ${recipeEffort} AND id = ${randomNumber}
+  SELECT * FROM recipes  WHERE type = ${recipeType} AND taste = ${recipeTaste} AND effort = ${recipeEffort}  ORDER BY random() LIMIT 1
   `;
 
   return camelcaseKeys(recipe);
