@@ -19,6 +19,17 @@ const inputSubmitStyles = css`
   padding: 4px;
   cursor: pointer;
 `;
+
+type CreateRecipeResponseBody = {
+  recipe: {
+    id: number;
+    effort: string;
+    imageurl: string;
+    name: string;
+    taste: string;
+    type: string;
+  };
+};
 export default function Home() {
   const [foodType, setFoodType] = useState('');
   const [foodTaste, setFoodTaste] = useState('');
@@ -68,7 +79,7 @@ export default function Home() {
             });
 
             const createRecipeResponseBody =
-              (await createPersonResponse.json()) as CreateEventResponseBody;
+              (await createPersonResponse.json()) as CreateRecipeResponseBody;
             console.log(createRecipeResponseBody);
             if ('recipe' in createRecipeResponseBody) {
               setRecipeBoolean(true);
